@@ -1,0 +1,15 @@
+{
+  "excludedWorkbooks": [],
+  "excludedFolders": [
+    "Prep Builder Flows",
+    "Retire",
+    "Archive",
+    "Other",
+    "Default"
+  ],
+  "excludedFoldersExact": [
+    "default",
+    "Testing"
+  ],
+  "excludedPaths": []
+}
