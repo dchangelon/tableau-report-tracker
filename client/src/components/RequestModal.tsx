@@ -247,7 +247,6 @@ export function RequestModal({
                       "has-[:checked]:border-2",
                       type.color === "red" && "has-[:checked]:border-red-500 has-[:checked]:bg-red-50",
                       type.color === "purple" && "has-[:checked]:border-purple-500 has-[:checked]:bg-purple-50",
-                      type.color === "orange" && "has-[:checked]:border-orange-500 has-[:checked]:bg-orange-50",
                       type.color === "gray" && "has-[:checked]:border-gray-500 has-[:checked]:bg-gray-50",
                       isSubmitting && "opacity-50 cursor-not-allowed"
                     )}
@@ -263,7 +262,6 @@ export function RequestModal({
                       "w-5 h-5",
                       type.color === "red" && "text-red-500",
                       type.color === "purple" && "text-purple-500",
-                      type.color === "orange" && "text-orange-500",
                       type.color === "gray" && "text-gray-500"
                     )} aria-hidden="true" />
                     <div>
