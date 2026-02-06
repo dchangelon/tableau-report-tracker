@@ -341,7 +341,7 @@ class TestMockTrelloService:
 
         expected_lists = [
             "Change Request Queue",
-            "Review and Planning",
+            "Reviewing and Planning",
             "In Progress",
             "Pending Review",
             "Completed",
