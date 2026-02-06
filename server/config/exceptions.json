@@ -9,7 +9,8 @@
   ],
   "excludedFoldersExact": [
     "default",
-    "Testing"
+    "Testing",
+    "**Available Reports**"
   ],
   "excludedPaths": []
 }
