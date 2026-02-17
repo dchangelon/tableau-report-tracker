@@ -84,7 +84,9 @@ class TableauService:
                 )
 
                 if search_query:
-                    if search_query.lower() not in workbook.name.lower():
+                    query = search_query.lower()
+                    description = (workbook.description or "").lower()
+                    if query not in workbook.name.lower() and query not in description:
                         continue
 
                 if project_path:

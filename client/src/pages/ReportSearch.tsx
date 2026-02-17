@@ -78,7 +78,13 @@ export function ReportSearch() {
   }, [reports, selectedFolder, isViewingFavorites, favorites, deferredQuery]);
 
   const filteredReports = folderFilteredReports
-    .filter((report) => report.name.toLowerCase().includes(deferredQuery.toLowerCase()))
+    .filter((report) => {
+      const query = deferredQuery.toLowerCase();
+      return (
+        report.name.toLowerCase().includes(query) ||
+        (report.description != null && report.description.toLowerCase().includes(query))
+      );
+    })
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
 
   // Get current folder name for display
