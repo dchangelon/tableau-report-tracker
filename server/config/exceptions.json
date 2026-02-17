@@ -12,5 +12,6 @@
     "Testing",
     "**Available Reports**"
   ],
-  "excludedPaths": []
+  "excludedPaths": [],
+  "excludedTags": ["hidden"]
 }

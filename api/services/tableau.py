@@ -96,6 +96,11 @@ class TableauService:
                 if self._should_exclude(workbook.name, project_full_path):
                     continue
 
+                excluded_tags = self._exceptions.get("excludedTags", [])
+                if excluded_tags and workbook.tags:
+                    if workbook.tags & set(excluded_tags):
+                        continue
+
                 owner_info = user_map.get(workbook.owner_id, {})
                 project_info = project_map.get(workbook.project_id, {})
                 project_name = project_info.get("name", "Unknown")
