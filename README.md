@@ -160,4 +160,4 @@ tableau-report-tracker/
 
 ## License
 
-Internal use only.
+MIT

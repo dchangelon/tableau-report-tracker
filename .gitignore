@@ -42,6 +42,7 @@ cache/
 # Development files (not needed for deployment)
 DEVELOPMENT_PLAN.md
 VISUAL_*.md
+RETRO.md
 screenshot-*.png
 scripts/
 workbooks_for_descriptions.json
