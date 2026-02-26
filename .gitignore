@@ -46,3 +46,5 @@ RETRO.md
 screenshot-*.png
 scripts/
 workbooks_for_descriptions.json
+
+.vercel

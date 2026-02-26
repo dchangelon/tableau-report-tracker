@@ -222,39 +222,11 @@ class TrelloService:
 
         result = self._make_request("POST", "/cards", params)
 
-        # Add a checklist with standard workflow items
-        self._add_workflow_checklist(result["id"])
-
         return {
             "id": result["id"],
             "url": result["shortUrl"],
             "name": result["name"],
         }
-
-    def _add_workflow_checklist(self, card_id: str) -> None:
-        """Add a standard workflow checklist to a card."""
-        # Create checklist
-        checklist = self._make_request(
-            "POST",
-            "/checklists",
-            {"idCard": card_id, "name": "Workflow"},
-        )
-
-        # Add checklist items
-        items = [
-            "Request reviewed",
-            "Changes implemented",
-            "Testing completed",
-            "Deployed to production",
-            "Requester notified",
-        ]
-
-        for item in items:
-            self._make_request(
-                "POST",
-                f"/checklists/{checklist['id']}/checkItems",
-                {"name": item},
-            )
 
     def ensure_workflow_lists_exist(self) -> dict[str, str]:
         """
