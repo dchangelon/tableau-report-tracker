@@ -9,9 +9,9 @@
   ],
   "excludedFoldersExact": [
     "default",
-    "Testing",
-    "**Available Reports**"
+    "Testing"
   ],
   "excludedPaths": [],
+  "excludedProjectIds": ["b9f122ec-cff6-4ac5-8f54-2bebc51dd2ce"],
   "excludedTags": ["hidden"]
 }

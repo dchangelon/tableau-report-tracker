@@ -29,7 +29,7 @@ class TableauService:
         if config_path.exists():
             with open(config_path) as f:
                 return json.load(f)
-        return {"excludedWorkbooks": [], "excludedFolders": [], "excludedFoldersExact": [], "excludedPaths": []}
+        return {"excludedWorkbooks": [], "excludedFolders": [], "excludedFoldersExact": [], "excludedPaths": [], "excludedProjectIds": []}
 
     def _should_exclude(self, workbook_name: str, project_path: str) -> bool:
         """Check if workbook should be excluded based on exception list."""
@@ -50,6 +50,18 @@ class TableauService:
         for excluded_path in self._exceptions.get("excludedPaths", []):
             if project_path.startswith(excluded_path):
                 return True
+        return False
+
+    def _is_excluded_project(self, project_id: str, project_map: dict) -> bool:
+        """Check if project or any ancestor is in the excluded project IDs list."""
+        excluded_ids = set(self._exceptions.get("excludedProjectIds", []))
+        if not excluded_ids:
+            return False
+        current = project_id
+        while current:
+            if current in excluded_ids:
+                return True
+            current = project_map.get(current, {}).get("parent_id")
         return False
 
     def is_configured(self) -> bool:
@@ -117,6 +129,10 @@ class TableauService:
 
                 # Apply exception list filter
                 if self._should_exclude(workbook.name, project_full_path):
+                    continue
+
+                # Apply project ID exclusion (rename-proof)
+                if self._is_excluded_project(workbook.project_id, project_map):
                     continue
 
                 excluded_tags = self._exceptions.get("excludedTags", [])
@@ -284,7 +300,7 @@ class MockTableauService:
         if config_path.exists():
             with open(config_path) as f:
                 return json.load(f)
-        return {"excludedWorkbooks": [], "excludedFolders": [], "excludedFoldersExact": [], "excludedPaths": []}
+        return {"excludedWorkbooks": [], "excludedFolders": [], "excludedFoldersExact": [], "excludedPaths": [], "excludedProjectIds": []}
 
     def _should_exclude(self, workbook_name: str, project_path: str) -> bool:
         """Check if workbook should be excluded based on exception list."""
