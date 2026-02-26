@@ -8,6 +8,10 @@ A web application for browsing Tableau reports and submitting change requests vi
 - **Request Creation**: Submit change requests that automatically create Trello cards with workflow checklists
 - **Request Tracking**: Track the status and progress of submitted requests
 
+## Why This Exists
+
+Our team was getting report change requests through a mix of Slack messages, emails, and hallway conversations. Requests got lost, there was no way to track progress, and the same questions came up repeatedly. This app gives people a single place to find reports and submit structured requests that automatically flow into our Trello workflow.
+
 ## Tech Stack
 
 | Layer | Technology |
